@@ -1,0 +1,106 @@
+*
+{
+  font-family: 'Poppins', sans-serif;
+}
+@import url("https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css");
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fade-in-down {
+  0% {
+    opacity: 0;
+    transform: translate3d(
+      0,
+      -20px,
+      0
+    ); /* Slightly less distance for a smoother effect */
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+@keyframes fade-in-up {
+  0% {
+    opacity: 0;
+    transform: translate3d(
+      0,
+      70px,
+      0
+    ); /* Element will come up from 20px below */
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0); /* Reset position */
+  }
+}
+@keyframes fade-in-right {
+  0% {
+    opacity: 0;
+    transform: translate3d(100%, 0, 0);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+/* Initially hidden or positioned */
+.fade-in-right {
+  opacity: 0;
+  transform: translate3d(100%, 0, 0);
+  transition: opacity 3s ease, transform 1s ease;
+}
+
+/* Animation class to trigger on scroll */
+.fade-in-right.animate {
+  animation: fade-in-right 3s ease-in-out forwards;
+}
+
+.fadeinup {
+  animation: fade-in-up 4s ease-in-out; /* Fade up transition */
+}
+
+.fadein {
+  animation: fade-in 4s ease-in-out; /* Smooth transition with ease-in-out */
+}
+
+.fadeindown {
+  animation: fade-in-down 1s ease-in-out; /* Shorter duration for a snappier effect */
+}
+
+.saira-condensed-medium {
+  font-family: "Saira Condensed", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+}
+.saira-condensed-bold {
+  font-family: "Saira Condensed", serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+/*  */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+.fade-in {
+  animation: fadeIn 0.5s ease-in;
+}
+.zoom-effect {
+  overflow: hidden;
+}
+.zoom-effect img {
+  transition: transform 0.3s ease;
+}
+.zoom-effect:hover img {
+  transform: scale(1.1);
+}
