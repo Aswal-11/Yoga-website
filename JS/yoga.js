@@ -15,28 +15,25 @@ overlay.addEventListener("click", toggleMenu);
 
 document.addEventListener("scroll", function () {
   const element = document.getElementById("animated-element");
-  const position = element.getBoundingClientRect();
+  if (element) {
+      const position = element.getBoundingClientRect();
 
-  // Check if the element is within the viewport
-  if (position.top < window.innerHeight && position.bottom >= 0) {
-    element.classList.add("animate");
+      // Check if the element is within the viewport
+      if (position.top < window.innerHeight && position.bottom >= 0) {
+          element.classList.add("animate");
+      }
   }
 });
-
 document.addEventListener('DOMContentLoaded', function() {
   const video = document.getElementById('backgroundVideo');
   const fallback = document.getElementById('videoFallback');
   
-  // Check if video can play, otherwise show fallback
-  video.addEventListener('error', function() {
-      fallback.classList.remove('hidden');
-  });
-  
-  // For mobile devices, we might want to use the fallback image to save data
-  if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-      // Optional: Use fallback for mobile or keep video based on preference
-      // fallback.classList.remove('hidden');
-      // video.style.display = 'none';
+  if (video) {
+      video.addEventListener('error', function() {
+          if (fallback) {
+              fallback.classList.remove('hidden');
+          }
+      });
   }
   
   // Add intersection observer for elements to animate when in viewport
@@ -59,3 +56,12 @@ document.addEventListener('DOMContentLoaded', function() {
       observer.observe(el);
   });
 });
+
+
+// 
+if (typeof AOS !== 'undefined') {
+  AOS.init({
+      duration: 800,  // animation duration
+      once: true      // animate only once
+  });
+}
